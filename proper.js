@@ -307,6 +307,18 @@
         }
       },
 
+      internalLink: {
+        exec: function() {
+          removeFormat();
+          var iOS_bind = "iOS_bind_"+$.now();
+          //invoke url redirection for iOS
+          window.location.href = "klassmate://internalLink/"+iOS_bind;
+          $(document).one(iOS_bind, function(e, title, link){
+            document.execCommand('insertHTML', false, '<a href="'+link+'">'+title+'</a>');
+          });
+        }
+      },
+
       ul: {
         isActive: function() {
           return document.queryCommandState('insertUnorderedList', false, true);
@@ -494,8 +506,15 @@
           $controls.find('.command.'+name).addClass('selected');
         }
       });
+
+      // Thefron's flavored
+      $('#tools .command').removeClass('selected');
+      _.each(commands, function(command, name) {
+        if (command.isActive && command.isActive()) {
+          $('#tools .command.'+name).addClass('selected');
+        }
+      });
     }
-    
     
     // Placeholder
     // -----------
@@ -866,6 +885,7 @@
       content: content,
       exec: exec,
       commands: commands,
+      updateCommandState : updateCommandState,
       direction: function() { return direction; }
     };
   };
