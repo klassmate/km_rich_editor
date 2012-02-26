@@ -38,9 +38,12 @@
     // Utility
     function escape( content ) {
       content = $(content).map(function( index, e ) {
-        return e.innerHTML;
+        if($(e).get(0).tagName.toLowerCase() == "p")
+          return e.innerHTML + "<br>";
+        else
+          return e.outerHTML;
       });
-      content = content.toArray().join("<br>");
+      content = content.toArray().join("");
       content = content.replace(/<br>(<br>)+/, "<br>");
       content = content.replace(/<br>$/, "");
       return content;
