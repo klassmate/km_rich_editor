@@ -9,7 +9,7 @@ body {
   font-family:"HelveticaNeue", Helvetica, Arial, sans-serif;
   font-size:16px;
   line-height:1.2em;
-  max-height: 196px;
+  max-height: 214px;
   overflow: hidden;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -82,8 +82,8 @@ em { font-style: italic; }
 strong, b {font-weight: bold;}
 
 #content {
-  height: 170px;
-  max-height: 170px;
+  height: 198px;
+  max-height: 198px;
   overflow: auto;
   -webkit-border-radius:7px;
   -moz-border-radius:   5px;
